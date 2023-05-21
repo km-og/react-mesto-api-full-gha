@@ -1,0 +1,15 @@
+.auth {
+  max-width: 358px;
+  width: 100%;
+  margin: 60px auto 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 1);
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+  .auth {
+    max-width: 260px;
+    margin-top: 40px;
+  }
+}

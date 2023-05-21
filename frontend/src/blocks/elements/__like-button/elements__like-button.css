@@ -1,0 +1,18 @@
+.elements__like-button {
+  width: 22px;
+  height: 19px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0 12px 0;
+  background-image: url(../../../images/element-like-button.svg);
+  background-repeat: no-repeat;
+}
+
+/* .elements__like-button:active {
+  background-image: url(../../../images/element-like-button-active.svg);
+  opacity: 1;
+} */
+
+.elements__like-button:hover {
+  opacity: 0.5;
+}

@@ -1,0 +1,17 @@
+.popup-delete__save-button {
+  width: 100%;
+  max-width: 358px;
+  margin: 0 auto 37px;
+  display: block;
+}
+
+.popup-delete__save-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 767px) {
+  .popup-delete__save-button {
+    max-width: 238px;
+    font-size: 14px;
+  }
+}

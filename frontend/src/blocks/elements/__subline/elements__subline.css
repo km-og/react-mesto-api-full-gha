@@ -1,0 +1,7 @@
+.elements__subline {
+  display: flex;
+  justify-content: space-between;
+  max-width: 246px;
+  margin: 0 auto;
+  align-items: center;
+}

@@ -1,0 +1,9 @@
+.elements__likes-quantity {
+  padding: 0;
+  margin: 3px auto 0;
+  text-align: center;
+  width: 10px;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 400;
+}
