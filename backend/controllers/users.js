@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -116,7 +117,7 @@ const login = (req, res, next) => {
         { _id: user._id },
         NODE_ENV === "production"
           ? JWT_SECRET
-          : "a5b861a3d23e39525138d34dcfa6288856578fdbccefbb36e9acbf1c7889d908",
+          : "dev-secret",
         {
           expiresIn: "7d",
         },

@@ -1,10 +1,8 @@
+/* eslint-disable linebreak-style */
 const jwt = require("jsonwebtoken");
 const UnauthErr = require("../errors/UnauthErr");
 
-const {
-  JWT_SECRET = "a5b861a3d23e39525138d34dcfa6288856578fdbccefbb36e9acbf1c7889d908",
-} = process.env;
-
+const { JWT_SECRET } = process.env;
 // eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
