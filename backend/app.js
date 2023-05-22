@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -15,6 +16,12 @@ mongoose.connect("mongodb://127.0.0.1:27017/mestodb");
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get("/crash-test", () => {
+  setTimeout(() => {
+    throw new Error("Сервер сейчас упадёт");
+  }, 0);
+});
 
 app.use(router);
 app.use(errors());
