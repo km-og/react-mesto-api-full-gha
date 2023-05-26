@@ -1,5 +1,8 @@
+/* eslint-disable no-useless-return */
+/* eslint-disable no-else-return */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
+const { mongoose } = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
@@ -27,7 +30,7 @@ const getUserById = (req, res, next) => {
       res.send({ data: user });
     })
     .catch((err) => {
-      if (err.name === "DocumentNotFoundError") {
+      if (err instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundErr("Пользователь с указанным _id не найден"));
       } else {
         next(err);
@@ -51,11 +54,12 @@ const createUser = (req, res, next) => {
         });
       })
       .catch((err) => {
-        if (err.name === "ValidationError") {
+        if (err instanceof mongoose.Error.ValidationError) {
           next(new BadReqErr("Переданы некорректные данные пользователя"));
-        }
-        if (err.code === 11000) {
+          return;
+        } else if (err.code === 11000) {
           next(new ConflictErr("Пользователь с таким email уже существует"));
+          return;
         } else {
           next(err);
         }
@@ -80,8 +84,9 @@ const updateProfile = (req, res, next) => {
       res.send({ data: user });
     })
     .catch((err) => {
-      if (err.name === "ValidationError" || err.name === "CastError") {
+      if (err instanceof mongoose.Error.ValidationError) {
         next(new BadReqErr("Переданы некорректные данные пользователя"));
+        return;
       } else {
         next(err);
       }
@@ -101,8 +106,9 @@ const updateAvatar = (req, res, next) => {
     .orFail()
     .then((user) => res.send({ data: user }))
     .catch((err) => {
-      if (err.name === "ValidationError" || err.name === "CastError") {
+      if (err instanceof mongoose.Error.ValidationError) {
         next(new BadReqErr("Переданы некорректные данные пользователя"));
+        return;
       } else {
         next(err);
       }
@@ -139,8 +145,9 @@ const getUserInfo = (req, res, next) => {
       res.send({ data: user });
     })
     .catch((err) => {
-      if (err.name === "DocumentNotFoundError") {
+      if (err instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundErr("Пользователь с указанным _id не найден"));
+        return;
       } else {
         next(err);
       }

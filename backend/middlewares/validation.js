@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const { celebrate, Joi } = require("celebrate");
 
 const signinValidation = celebrate({
@@ -27,8 +28,8 @@ const getUserByIdValidation = celebrate({
 
 const updateProfileValidation = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
+    name: Joi.string().min(2).max(30).required(),
+    about: Joi.string().min(2).max(30).required(),
   }),
 });
 
@@ -36,7 +37,7 @@ const updateAvatarValidation = celebrate({
   body: Joi.object().keys({
     avatar: Joi.string().pattern(
       /https*:\/\/[w{3}.]?[\S]+#?\.[\S]+/i,
-    ),
+    ).required(),
   }),
 });
 

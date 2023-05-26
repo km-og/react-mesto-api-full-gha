@@ -1,7 +1,6 @@
 /* eslint-disable linebreak-style */
 require("dotenv").config();
 const express = require("express");
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const { errors } = require("celebrate");
@@ -14,8 +13,8 @@ const app = express();
 mongoose.connect("mongodb://127.0.0.1:27017/mestodb");
 
 app.use(helmet());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/crash-test", () => {
   setTimeout(() => {
